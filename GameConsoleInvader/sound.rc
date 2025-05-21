@@ -1,0 +1,6 @@
+1 WAVE "./sound/game_start_v2.wav"
+2 WAVE "./sound/shoot.wav"
+3 WAVE "./sound/enemy_die.wav"
+4 WAVE "./sound/ship_die.wav"
+5 WAVE "./sound/win.wav"
+6 WAVE "./sound/game_over.wav"
