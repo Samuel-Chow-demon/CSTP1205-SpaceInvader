@@ -21,9 +21,9 @@ void CEnemyFactory::Draw(void)
 
     if (m_vecEnemy.size())
     {
-        for (auto &enemy : m_vecEnemy)
+        for (auto &p_enemy : m_vecEnemy)
         {
-            enemy.Draw();
+            p_enemy->Draw();
         }
     }
 }
@@ -48,20 +48,21 @@ int CEnemyFactory::Control(void)
             m_iNextSpawnDuration = dis(gen);
 
             // use move to pass over the memory, get rid of the copy constructor
-            m_vecEnemy.push_back(move(CEnemy(m_pObjGame, m_stResponseRate, m_stPixelSpeedPerCtrl, st2D(iStartXPos, 0), m_eColor)));
+            m_vecEnemy.emplace_back(std::make_unique<CEnemy>(m_pObjGame, m_stResponseRate, m_stPixelSpeedPerCtrl, st2D(iStartXPos, 0), m_eColor));
         }
 
         if (m_vecEnemy.size())
         {
-            for (auto &enemy : m_vecEnemy)
+            for (auto &p_enemy : m_vecEnemy)
             {
-                iCurFrameTotalEnemyDestroyed += enemy.Control();
+                iCurFrameTotalEnemyDestroyed += p_enemy->Control();
             }
 
             // Check Any Enemy Out Of Screen, OR
             // If the Life become zero or less AND finished the Destroy Anime
             // To Remove Obj          
-            stGameObjAttrib::CheckAndRemoveObj<CEnemy>(m_vecEnemy, [](CEnemy& obj) {return obj.IsNeedDestroy(); });
+            stGameObjAttrib::CheckAndRemoveObj<std::unique_ptr<CEnemy>>(m_vecEnemy,
+                                                        [](std::unique_ptr<CEnemy>& pobj) {return pobj->IsNeedDestroy(); });
         }
     }
     return iCurFrameTotalEnemyDestroyed;
