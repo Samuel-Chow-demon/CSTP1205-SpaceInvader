@@ -15,7 +15,7 @@ public:
 
 private:
 	int m_iMaxEnemyInScreen;
-	std::vector<CEnemy> m_vecEnemy;
+	std::vector<std::unique_ptr<CEnemy>> m_vecEnemy;
 	CGameEngine *m_pObjGame;
 	std::chrono::steady_clock::time_point m_tLastSpawnTime;
 	int m_iNextSpawnDuration;
