@@ -24,7 +24,7 @@ public:
     }
 
 private:
-    std::vector<CMissile> m_vecFiredMissile;
+    std::vector<std::unique_ptr<CMissile>> m_vecFiredMissile;
     CDestroyAnime m_objDestory;
     bool m_bFirePressed;
 };
