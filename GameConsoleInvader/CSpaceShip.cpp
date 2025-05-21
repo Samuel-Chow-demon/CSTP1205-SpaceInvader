@@ -71,9 +71,9 @@ void CSpaceShip::Draw(void)
             m_objDestory.Draw();
         }
 
-        for (auto &objMissile : m_vecFiredMissile)
+        for (auto &pobjMissile : m_vecFiredMissile)
         {
-            objMissile.Draw();
+            pobjMissile->Draw();
         }
     }
 }
@@ -114,11 +114,11 @@ void CSpaceShip::Control(void)
 
                         const int iSpriteWidthHalf = static_cast<int>(m_vecSprite[0].length() / 2);
                         // Fire at the top tip of the space ship
-                        m_vecFiredMissile.push_back(CMissile(m_pObjGame, 
-                                                            st2D{ 0, CONST_PER_CONTROL_MISSILE_IN_MS },                     // control in Y dir only
-                                                            st2D{ 0, DEFAULT_MISSILE_PIXEL_MOVE_SPEED },                    // move in Y dir only
-                                                            st2D{ m_stObjTLPos.X() + iSpriteWidthHalf, m_stObjTLPos.Y() },  // start pos
-                                                            eWHITE));                                                       // color
+                        m_vecFiredMissile.emplace_back(std::make_unique<CMissile>(m_pObjGame, 
+                                                                            st2D{ 0, CONST_PER_CONTROL_MISSILE_IN_MS },                     // control in Y dir only
+                                                                            st2D{ 0, DEFAULT_MISSILE_PIXEL_MOVE_SPEED },                    // move in Y dir only
+                                                                            st2D{ m_stObjTLPos.X() + iSpriteWidthHalf, m_stObjTLPos.Y() },  // start pos
+                                                                            eWHITE));                                                       // color
                     }
                 }
                 else
@@ -133,14 +133,15 @@ void CSpaceShip::Control(void)
         }
 
         // Missile Fire Path Run
-        for (auto& objMissile : m_vecFiredMissile)
+        for (auto& pobjMissile : m_vecFiredMissile)
         {
-            objMissile.Control();
+            pobjMissile->Control();
         }
 
         // Check Any Missile Out Of Screen, OR
         // If the Life become zero or less
         // To Remove Obj
-        stGameObjAttrib::CheckAndRemoveObj<CMissile>(m_vecFiredMissile, [](CMissile& obj) {return obj.IsNeedDestroy(); });
+        stGameObjAttrib::CheckAndRemoveObj<std::unique_ptr<CMissile>>(m_vecFiredMissile,
+                                            [](std::unique_ptr<CMissile>& pobj) {return pobj->IsNeedDestroy(); });
     }
 }
