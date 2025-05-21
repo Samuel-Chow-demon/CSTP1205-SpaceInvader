@@ -41,9 +41,9 @@ All sprite designs are created using vector of string with "*" character as foll
 
 |Game Character | Sprite Design|
 |-|-|
-|Enemy|<img src="./images/enemy.webp" style="scale:0.7"></img>|
-|Spaceship|<img src="./images/spaceship.webp" style="scale:0.7"></img>|
-|Missile|<img src="./images/missile.webp" style="scale:0.7"></img>|
+|Enemy|<img src="./images/enemy.webp" style="width:500px"></img>|
+|Spaceship|<img src="./images/spaceship.webp" style="width:500px"></img>|
+|Missile|<img src="./images/missile.webp" style="width:500px"></img>|
 
 <br>
 
@@ -51,11 +51,11 @@ All sprite designs are created using vector of string with "*" character as foll
 
 Wide-Character is needed as the Character Set since the FULL BLOCK █ character is in UTF-16
 
-<img src="./images/unicode_setting.webp" style="width:700"></img>
+<img src="./images/unicode_setting.webp" style="width:700px"></img>
 
 Legacy terminal is needed since Window 11 onwards "Window Terminal" do not support character width modification
 
-<img src="./images/legacyterminal.webp" style="width:700"></img>
+<img src="./images/legacyterminal.webp" style="width:700px"></img>
 
 <br>
 
@@ -77,7 +77,7 @@ Legacy terminal is needed since Window 11 onwards "Window Terminal" do not suppo
 
 ## Section 5 - Project UML Diagram
 
-<img src="./images/uml.webp" style="width:700"></img>
+<img src="./images/uml.webp" style="width:700px"></img>
 
 <br>
 
@@ -85,7 +85,7 @@ Legacy terminal is needed since Window 11 onwards "Window Terminal" do not suppo
 
 ## 6.1 Programming Flow
 
-<img src="./images/program_flowchart.webp" style="width:700"></img>
+<img src="./images/program_flowchart.webp" style="width:700px"></img>
 
 <br>
 
@@ -93,11 +93,11 @@ Legacy terminal is needed since Window 11 onwards "Window Terminal" do not suppo
 
 ### 6.2.1 Rendering Flow
 
-<img src="./images/spaceship_render_flowchart.webp" style="width:500"></img>
+<img src="./images/spaceship_render_flowchart.webp" style="width:500px"></img>
 
 ### 6.2.2 Control Flow
 
-<img src="./images/spaceship_control_flowchart.webp" style="width:700"></img>
+<img src="./images/spaceship_control_flowchart.webp" style="width:700px"></img>
 
 <br>
 
@@ -105,11 +105,11 @@ Legacy terminal is needed since Window 11 onwards "Window Terminal" do not suppo
 
 ### 6.3.1 Rendering Flow
 
-<img src="./images/enemyfactory_render_flowchart.webp" style="width:500"></img>
+<img src="./images/enemyfactory_render_flowchart.webp" style="width:500px"></img>
 
 ### 6.2.2 Control Flow
 
-<img src="./images/enemyfactory_control_flowchart.webp" style="width:700"></img>
+<img src="./images/enemyfactory_control_flowchart.webp" style="width:700px"></img>
 
 <br>
 
